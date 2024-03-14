@@ -1,8 +1,9 @@
 <?php
 
 
-function show($stuff){
-    echo "<pre>";
-    print_r($stuff);
-    echo "</pre>";
-}
+if($_SERVER['SERVER_NAME'] =='localhost'){
+    define('ROOT','http://localhost/mvctwo/public');
+}else{
+    define('ROOT','https://www.mydomain.com');
+
+};
