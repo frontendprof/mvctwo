@@ -20,4 +20,17 @@ Trait Database{
         }
         return false;
     }
+
+    public function query_row($sql,$params=[]){
+        $con = $this->connect();
+        $stmt = $con->prepare($sql);
+        $check=$stmt->execute($params);
+        if($check){
+            $result=$stmt->fetchAll(PDO::FETCH_OBJ);
+            if(is_array($result)&& count($result)){
+                return $result[0];
+            }
+        }
+        return false;
+    }
 }
